@@ -16,7 +16,7 @@ spec:
         - name: healthcare-app  # Better container name
           image: vipinms90/staragileprojecthealthcare:v1  # Match your Docker Hub image
           ports:
-            - containerPort: 8081  # Ensure this matches your app's port
+            - containerPort: 8082  # Ensure this matches your app's port
           resources:  # Add resource limits (recommended)
             limits:
               cpu: "500m"

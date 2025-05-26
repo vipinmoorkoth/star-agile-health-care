@@ -35,5 +35,5 @@ spec:
   type: NodePort
   ports:
     - port: 80
-      targetPort: 8081  # Must match containerPort
+      targetPort: 8082  # Must match containerPort
       nodePort: 30007   # Valid range (30000-32767)

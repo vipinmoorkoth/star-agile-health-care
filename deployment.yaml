@@ -1,34 +1,39 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: healthcare
+  name: healthcare-deployment  # More descriptive name
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: healthcare
-  template:s
+  template:
     metadata:
       labels:
         app: healthcare
     spec:
       containers:
-      - name: healthcare
-        image: vipinms90/staragileprojecthealthcare:v1
-        ports:
-        - containerPort: 8082
-
+        - name: healthcare-app  # Better container name
+          image: vipinms90/staragileprojecthealthcare:v1  # Match your Docker Hub image
+          ports:
+            - containerPort: 8081  # Ensure this matches your app's port
+          resources:  # Add resource limits (recommended)
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: healthcare
+  name: healthcare-service  # More descriptive name
 spec:
   selector:
     app: healthcare
   type: NodePort
   ports:
     - port: 80
-      targetPort: 8082
-      nodePort: 30007
+      targetPort: 8081  # Must match containerPort
+      nodePort: 30007   # Valid range (30000-32767)

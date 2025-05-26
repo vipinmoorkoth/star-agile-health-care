@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: healthcare
-  template:
+  template:s
     metadata:
       labels:
         app: healthcare
